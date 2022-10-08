@@ -36,7 +36,7 @@ public class LedgeGenerate : MonoBehaviour
         ledgePos += 1;
         Instantiate(ledge[0], new Vector3(0, 0, ledgePos), Quaternion.identity);
         ledgePos += 1;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         creatingLedge = false;
     }
 
@@ -51,7 +51,7 @@ public class LedgeGenerate : MonoBehaviour
         yield return new WaitForSeconds(1);
         cauntDownText.SetActive(false);
         panel.SetActive(false);
-        characterFile.GetComponent<CharacterControl>().enabled = true;
+        characterFile.GetComponentInChildren<moveControl>().enabled = true;
         cauntDownText.GetComponent<TextMeshProUGUI>().text = "3";
     }
 }
