@@ -12,6 +12,7 @@ public class LedgeGenerate : MonoBehaviour
     public bool creatingLedge = false;
     public GameObject cauntDownText;
     public GameObject panel;
+    public GameObject characterFile;
 
 
     void Start()
@@ -50,6 +51,7 @@ public class LedgeGenerate : MonoBehaviour
         yield return new WaitForSeconds(1);
         cauntDownText.SetActive(false);
         panel.SetActive(false);
+        characterFile.GetComponent<CharacterControl>().enabled = true;
         cauntDownText.GetComponent<TextMeshProUGUI>().text = "3";
     }
 }
