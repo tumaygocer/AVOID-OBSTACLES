@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LedgeGenerate : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class LedgeGenerate : MonoBehaviour
     public int ledgeNum;
     public int ledgePos = 10;
     public bool creatingLedge = false;
+    public GameObject cauntDownText;
+    public GameObject panel;
+
+
+    void Start()
+    {
+        StartCoroutine(Begin());
+    }
 
     void Update()
     {
@@ -28,5 +37,19 @@ public class LedgeGenerate : MonoBehaviour
         ledgePos += 1;
         yield return new WaitForSeconds(1);
         creatingLedge = false;
+    }
+
+    IEnumerator Begin()
+    {
+        panel.SetActive(true);
+        cauntDownText.SetActive(true);
+        yield return new WaitForSeconds(1);
+        cauntDownText.GetComponent<TextMeshProUGUI>().text = "2";
+        yield return new WaitForSeconds(1);
+        cauntDownText.GetComponent<TextMeshProUGUI>().text = "1";
+        yield return new WaitForSeconds(1);
+        cauntDownText.SetActive(false);
+        panel.SetActive(false);
+        cauntDownText.GetComponent<TextMeshProUGUI>().text = "3";
     }
 }
