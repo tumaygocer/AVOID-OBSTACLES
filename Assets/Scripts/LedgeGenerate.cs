@@ -7,7 +7,7 @@ public class LedgeGenerate : MonoBehaviour
 
     public GameObject[] ledge;
     public int ledgeNum;
-    public int ledgePos = 5;
+    public int ledgePos = 10;
     public bool creatingLedge = false;
 
     void Update()
