@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class moveControl : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class moveControl : MonoBehaviour
     public GameObject character;
     bool beginRun;
     public GameObject gameOverPanel;
+    public GameObject scorPanel;
+    public int scor = 0;
 
     void Start()
     {
@@ -46,6 +49,12 @@ public class moveControl : MonoBehaviour
             anim.SetBool("Run", false);
             anim.SetBool("gameover", true);
             gameOverPanel.SetActive(true);
+        }
+
+        if (other.CompareTag("Scor"))
+        {
+            scor += 1;
+            scorPanel.GetComponent<TextMeshProUGUI>().text = "SCOR " + scor;
         }
     }
 }
