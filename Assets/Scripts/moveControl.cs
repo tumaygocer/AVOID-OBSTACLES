@@ -19,7 +19,7 @@ public class moveControl : MonoBehaviour
         beginRun = true;
         
     }
-    
+
     public void PlayAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -29,7 +29,6 @@ public class moveControl : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
 
     void Update()
     {
