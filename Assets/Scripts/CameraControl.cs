@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    public GameObject runner;
-    Vector3 distance;
+    public Transform target;
+    public Vector3 distance;
 
-    void Start()
+    private void Start()
     {
-        distance = transform.position - runner.transform.position;
+        distance = transform.position - target.transform.position;
     }
+    private void LateUpdate()
+    {
+        this.transform.position = Vector3.Lerp(this.transform.position, target.transform.position + distance, Time.deltaTime);
+    }
+
 
     
-    void Update()
-    {
-        transform.position = runner.transform.position + distance;
-    }
 }
