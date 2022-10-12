@@ -6,17 +6,17 @@ using TMPro;
 
 public class moveControl : MonoBehaviour
 {
-    Animator anim;
+  
     public GameObject character;
-    bool beginRun;
+    
     public GameObject gameOverPanel;
     public GameObject scorPanel;
     public int scor = 0;
 
     void Start()
     {
-        anim = character.GetComponent<Animator>();
-        beginRun = true;
+       
+       
         
     }
 
@@ -32,12 +32,7 @@ public class moveControl : MonoBehaviour
 
     void Update()
     {
-        if (beginRun == true)
-        {
-            anim.SetBool("Run", true);
-
-        }
-      
+        
 
     }
 
@@ -45,8 +40,7 @@ public class moveControl : MonoBehaviour
     {
         if (other.CompareTag("barrier"))
         {
-            anim.SetBool("Run", false);
-            anim.SetBool("gameover", true);
+           
             gameOverPanel.SetActive(true);
         }
 

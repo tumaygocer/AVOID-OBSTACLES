@@ -6,9 +6,17 @@ public class XCamControl : MonoBehaviour
 {  
     bool right;
     bool left;
+    float speed = 2.0f;
+    public GameObject speedControl;
 
     private void Update()
     {
+        if (speedControl.GetComponentInChildren<moveControl>().enabled == true)
+        {
+            transform.Translate(0, 0, speed * Time.deltaTime);
+        }
+                         
+
         Vector3 go_right = new Vector3(1, transform.position.y, transform.position.z);
         Vector3 go_left = new Vector3(-1, transform.position.y, transform.position.z);
 

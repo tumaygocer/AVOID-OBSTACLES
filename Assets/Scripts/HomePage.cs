@@ -9,4 +9,6 @@ public class HomePage : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    
 }
