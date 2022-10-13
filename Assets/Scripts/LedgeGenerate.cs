@@ -51,7 +51,7 @@ public class LedgeGenerate : MonoBehaviour
         yield return new WaitForSeconds(1);
         cauntDownText.SetActive(false);
         panel.SetActive(false);
-        characterFile.GetComponentInChildren<moveControl>().enabled = true;
+        characterFile.GetComponentInChildren<XCamControl>().enabled = true;
         cauntDownText.GetComponent<TextMeshProUGUI>().text = "3";
     }
 }

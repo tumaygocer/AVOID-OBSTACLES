@@ -5,16 +5,22 @@ using UnityEngine;
 public class XCamControl : MonoBehaviour
 {  
     bool right;
-    bool left;
-    float speed = 2.0f;
+    bool left;   
     public GameObject speedControl;
+    Rigidbody rd;
+    public GameObject GameOverPanel;
+    float speed = 5.0f;
+
+    private void Start()
+    {
+        rd = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
-        if (speedControl.GetComponentInChildren<moveControl>().enabled == true)
-        {
-            transform.Translate(0, 0, speed * Time.deltaTime);
-        }
+       
+        rd.AddForce(Vector3.forward * speed, ForceMode.Force);
+        
                          
 
         Vector3 go_right = new Vector3(1, transform.position.y, transform.position.z);
@@ -47,5 +53,7 @@ public class XCamControl : MonoBehaviour
             }
         }
     }
+
+  
 
 }
