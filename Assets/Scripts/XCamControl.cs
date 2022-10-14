@@ -1,59 +1,95 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class XCamControl : MonoBehaviour
 {  
     bool right;
     bool left;   
-    public GameObject speedControl;
+    bool speedControl;
     Rigidbody rd;
     public GameObject GameOverPanel;
-    float speed = 5.0f;
+    int Scor;
+    public GameObject scorPanel;
+    [SerializeField] float speed;
+    
 
     private void Start()
     {
+        Scor = 0;
+        speedControl = true;
         rd = GetComponent<Rigidbody>();
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void AnaSayfa()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void Update()
     {
-       
-        rd.AddForce(Vector3.forward * speed, ForceMode.Force);
-        
-                         
 
+        if (speedControl == true)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+       
+        
+        if (Input.touchCount == 0) return;
+        HandleInput();
+    }
+
+    private void HandleInput()
+    {
         Vector3 go_right = new Vector3(1, transform.position.y, transform.position.z);
         Vector3 go_left = new Vector3(-1, transform.position.y, transform.position.z);
+        Touch finger = Input.GetTouch(0);
 
-        if (Input.touchCount > 0)
+        if (finger.deltaPosition.x > 50.0f)
         {
-            Touch finger = Input.GetTouch(0);
+            right = true;
+            left = false;
+        }
 
-            if (finger.deltaPosition.x > 50.0f)
-            {
-                right = true;
-                left = false;
-            }
+        if (finger.deltaPosition.x < -50.0f)
+        {
+            right = false;
+            left = true;
+        }
 
-            if (finger.deltaPosition.x < -50.0f)
-            {
-                right = false;
-                left = true;
-            }
+        if (right == true)
+        {
+            transform.position = Vector3.Lerp(transform.position, go_right, 5 * Time.deltaTime);
+        }
 
-            if (right == true)
-            {
-                transform.position = Vector3.Lerp(transform.position, go_right, 5 * Time.deltaTime);
-            }
-
-            if (left == true)
-            {
-                transform.position = Vector3.Lerp(transform.position, go_left, 5 * Time.deltaTime);
-            }
+        if (left == true)
+        {
+            transform.position = Vector3.Lerp(transform.position, go_left, 5 * Time.deltaTime);
         }
     }
 
-  
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("barrier"))
+        {
+            GameOverPanel.SetActive(true);
+            speedControl = false;
+        }
+
+        if (collision.gameObject.CompareTag("Scor"))
+        {
+            Scor += 1;
+            scorPanel.GetComponent<TextMeshProUGUI>().text = "SCOR " + Scor;
+        }
+                                           
+    }
+
 
 }
