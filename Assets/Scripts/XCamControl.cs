@@ -14,7 +14,6 @@ public class XCamControl : MonoBehaviour
     int Scor;
     public GameObject scorPanel;
     [SerializeField] float speed;
-    
 
     private void Start()
     {
@@ -81,15 +80,14 @@ public class XCamControl : MonoBehaviour
         {
             GameOverPanel.SetActive(true);
             speedControl = false;
+            
         }
 
         if (collision.gameObject.CompareTag("Scor"))
-        {
+        {            
             Scor += 1;
             scorPanel.GetComponent<TextMeshProUGUI>().text = "SCOR " + Scor;
         }
                                            
     }
-
-
 }
