@@ -15,6 +15,7 @@ public class XCamControl : MonoBehaviour
     public GameObject scorPanel;
     [SerializeField] float speed;
     public AudioSource scorSound;
+     
 
     private void Start()
     {
@@ -52,13 +53,13 @@ public class XCamControl : MonoBehaviour
         Vector3 go_left = new Vector3(-1, transform.position.y, transform.position.z);
         Touch finger = Input.GetTouch(0);
 
-        if (finger.deltaPosition.x > 50.0f)
+        if (finger.deltaPosition.x > 60.0f)
         {
             right = true;
             left = false;
         }
 
-        if (finger.deltaPosition.x < -50.0f)
+        if (finger.deltaPosition.x < -60.0f)
         {
             right = false;
             left = true;
@@ -80,15 +81,14 @@ public class XCamControl : MonoBehaviour
         if (collision.gameObject.CompareTag("barrier"))
         {
             GameOverPanel.SetActive(true);
-            speedControl = false;
-            
+            speedControl = false;           
         }
 
         if (collision.gameObject.CompareTag("Scor"))
         {
             scorSound.Play();
             Scor += 1;
-            scorPanel.GetComponent<TextMeshProUGUI>().text = "SCOR " + Scor;
+            scorPanel.GetComponent<TextMeshProUGUI>().text = "SCOR " + Scor;           
         }
                                            
     }
