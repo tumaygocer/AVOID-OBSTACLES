@@ -66,12 +66,12 @@ public class XCamControl : MonoBehaviour
 
         if (right == true)
         {
-            transform.position = Vector3.Lerp(transform.position, go_right, 5 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, go_right, 4 * Time.deltaTime);
         }
 
         if (left == true)
         {
-            transform.position = Vector3.Lerp(transform.position, go_left, 5 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, go_left, 4 * Time.deltaTime);
         }
     }
 
