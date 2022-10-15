@@ -14,6 +14,7 @@ public class XCamControl : MonoBehaviour
     int Scor;
     public GameObject scorPanel;
     [SerializeField] float speed;
+    public AudioSource scorSound;
 
     private void Start()
     {
@@ -84,7 +85,8 @@ public class XCamControl : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Scor"))
-        {            
+        {
+            scorSound.Play();
             Scor += 1;
             scorPanel.GetComponent<TextMeshProUGUI>().text = "SCOR " + Scor;
         }
