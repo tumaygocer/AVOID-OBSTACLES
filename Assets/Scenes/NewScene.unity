@@ -5356,7 +5356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverPanel: {fileID: 948659058}
   scorPanel: {fileID: 1727553076}
-  speed: 4
+  speed: 2
 --- !u!136 &1141152736
 CapsuleCollider:
   m_ObjectHideFlags: 0
